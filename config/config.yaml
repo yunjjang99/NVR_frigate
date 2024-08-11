@@ -1,0 +1,96 @@
+mqtt:
+  enabled: false # MQTT 비활성화
+
+cameras:
+  sentec: # 카메라 이름
+    enabled: true
+    ffmpeg:
+      inputs:
+        - path: rtsp://admin:admin123!@sentecmain.tplinkdns.com:4002/video1+audio1
+          roles:
+            - detect
+    detect:
+      enabled: true # 디텍팅 활성화
+      width: 1280
+      height: 720
+    motion: # 모션 설정
+      threshold: 25 # 모션 감지 민감도 설정 (1-255)
+      contour_area: 15 # 모션 감지 시 최소 크기 설정
+      mask: 0.384,0.548,0.619,0.639,0.544,0.83,0.259,0.892,0.233,0.623
+    objects:
+      track:
+        - vehicle # 차량 객체 추적 추가
+      mask: 0.215,0.422,0.219,0.929,0.719,0.823,0.733,0.327
+    zones:
+      parking_lot: # 주차장 존 설정
+        coordinates: 0.226,0.244,0.245,0.977,0.9,0.267
+        inertia: 3
+        loitering_time: 0
+    snapshots: # 스냅샷 설정
+      enabled: true # 스냅샷 활성화
+      timestamp: true # 타임스탬프 표시
+      bounding_box: true # 경계 상자 표시
+      height: 720 # 스냅샷의 높이 조정
+      quality: 70 # JPEG 품질 조정
+
+    review:
+      alerts:
+        required_zones: parking_lot
+  sentec1:
+    enabled: true
+    ffmpeg:
+      inputs:
+        - path: rtsp://admin:admin123!@sentecmain.tplinkdns.com:4002/video1+audio1
+          roles:
+            - detect
+    detect:
+      enabled: true
+      width: 1280
+      height: 720
+    motion:
+      threshold: 25
+      contour_area: 15
+    objects:
+      track:
+        - vehicle
+    zones:
+      parking_lot:
+        coordinates: 0.249,0.984,0.241,0.793,0.189,0.242,0.603,0.285,0.839,0.291,0.81,0.99,0.252,1
+        inertia: 3
+        loitering_time: 0
+    snapshots:
+      enabled: true
+      timestamp: true
+      bounding_box: true
+      height: 720
+      quality: 70
+
+  sentec2:
+    enabled: true
+    ffmpeg:
+      inputs:
+        - path: rtsp://admin:admin123!@sentecmain.tplinkdns.com:4002/video1+audio1
+          roles:
+            - detect
+    detect:
+      enabled: true
+      width: 1280
+      height: 720
+    motion:
+      threshold: 25
+      contour_area: 15
+    objects:
+      track:
+        - vehicle
+    zones:
+      parking_lot:
+        coordinates: 0.284,0.997,0.389,0.869,0.410,0.745
+        objects:
+          - vehicle
+    snapshots:
+      enabled: true
+      timestamp: true
+      bounding_box: true
+      height: 720
+      quality: 70
+version: 0.14

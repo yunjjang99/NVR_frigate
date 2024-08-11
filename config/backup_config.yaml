@@ -1,0 +1,90 @@
+mqtt:
+  enabled: false # MQTT 비활성화
+
+cameras:
+  sentec: # 카메라 이름
+    enabled: true
+    ffmpeg:
+      inputs:
+        - path: rtsp://admin:admin123!@sentecmain.tplinkdns.com:4002/video1+audio1
+          roles:
+            - detect
+    detect:
+      enabled: true # 디텍팅 활성화
+      width: 1280
+      height: 720
+    motion: # 모션 설정
+      threshold: 25 # 모션 감지 민감도 설정 (1-255)
+      contour_area: 15 # 모션 감지 시 최소 크기 설정
+    objects:
+      track:
+        - vehicle # 차량 객체 추적 추가
+    zones:
+      parking_lot: # 주차장 존 설정
+        coordinates: 0.284,0.997,0.389,0.869,0.410,0.745
+        objects:
+          - vehicle # 차량 객체가 감지되면 알림 생성
+    snapshots: # 스냅샷 설정
+      enabled: true # 스냅샷 활성화
+      timestamp: true # 타임스탬프 표시
+      bounding_box: true # 경계 상자 표시
+      height: 720 # 스냅샷의 높이 조정
+      quality: 70 # JPEG 품질 조정
+
+  sentec1:
+    enabled: true
+    ffmpeg:
+      inputs:
+        - path: rtsp://admin:admin123!@sentecmain.tplinkdns.com:4002/video1+audio1
+          roles:
+            - detect
+    detect:
+      enabled: true
+      width: 1280
+      height: 720
+    motion:
+      threshold: 25
+      contour_area: 15
+    objects:
+      track:
+        - vehicle
+    zones:
+      parking_lot:
+        coordinates: 0.284,0.997,0.389,0.869,0.410,0.745
+        objects:
+          - vehicle
+    snapshots:
+      enabled: true
+      timestamp: true
+      bounding_box: true
+      height: 720
+      quality: 70
+
+  sentec2:
+    enabled: true
+    ffmpeg:
+      inputs:
+        - path: rtsp://admin:admin123!@sentecmain.tplinkdns.com:4002/video1+audio1
+          roles:
+            - detect
+    detect:
+      enabled: true
+      width: 1280
+      height: 720
+    motion:
+      threshold: 25
+      contour_area: 15
+    objects:
+      track:
+        - vehicle
+    zones:
+      parking_lot:
+        coordinates: 0.284,0.997,0.389,0.869,0.410,0.745
+        objects:
+          - vehicle
+    snapshots:
+      enabled: true
+      timestamp: true
+      bounding_box: true
+      height: 720
+      quality: 70
