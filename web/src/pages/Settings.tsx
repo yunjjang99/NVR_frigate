@@ -39,7 +39,7 @@ import AuthenticationView from "@/views/settings/AuthenticationView";
 export default function Settings() {
   const settingsViews = [
     "general",
-    "camera settings",
+    "카메라 설정",
     "masks / zones",
     "motion tuner",
     "debug",
@@ -161,7 +161,7 @@ export default function Settings() {
         {page == "debug" && (
           <ObjectSettingsView selectedCamera={selectedCamera} />
         )}
-        {page == "camera settings" && (
+        {page == "카메라 설정" && (
           <CameraSettingsView
             selectedCamera={selectedCamera}
             setUnsavedChanges={setUnsavedChanges}
