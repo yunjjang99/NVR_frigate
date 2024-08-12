@@ -138,7 +138,7 @@ export default function Settings() {
           </div>
         </ScrollArea>
         {(page == "debug" ||
-          page == "camera settings" ||
+          page == "카메라 설정" ||
           page == "masks / zones" ||
           page == "motion tuner") && (
           <div className="ml-2 flex flex-shrink-0 items-center gap-2">
